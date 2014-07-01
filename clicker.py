@@ -11,7 +11,7 @@ import sys
 def get_html (data, openers=None):
 	if openers:
 		responses = [opener.open('http://www.eda.by/enter.php', data) for opener in openers]
-		return (str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n' for response in responses)
+		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n' for response in responses]
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
 		response = urllib2.urlopen(req)
@@ -55,7 +55,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print fetch_data
 	print post_data
 	log.write('LOG\n')
-	log.write(get_html(post_data[0], openers))
+	[log.write(x) for x in get_html(post_data[0], openers)]
 	log.write(get_html(fetch_data))
 	log.flush()
 	while True:
@@ -66,9 +66,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 			for x in xrange(len(p_type)):
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-					log.write(get_html(post_data[x], openers))
+					[log.write(x) for x in get_html(post_data[x], openers)]
 					log.write(get_html(fetch_data))
-					log.write(get_html(post_data[x], openers))
+					[log.write(x) for x in get_html(post_data[x], openers)]
 					log.flush()
 					break
 		except Exception as e:
