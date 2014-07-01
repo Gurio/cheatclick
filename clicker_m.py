@@ -46,8 +46,8 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print fetch_data
 	print post_data
 	log.write('LOG\n')
-	log.write(datetime.datetime.utcnow() + ' ' + get_html(post_data[0])+'\n')
-	log.write(datetime.datetime.utcnow() + ' ' + get_html(fetch_data)+'\n')
+	log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(post_data[0])+'\n')
+	log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(fetch_data)+'\n')
 	log.flush()
 
         while True:
@@ -58,13 +58,13 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
                         for x in xrange(len(p_type)):
                                 #print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
                                 if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-                                        log.write(datetime.datetime.utcnow() + ' ' + get_html(post_data[x])+'\n')
-                                        log.write(datetime.datetime.utcnow() + ' ' + get_html(fetch_data)+'\n')
-                                        log.write(datetime.datetime.utcnow() + ' ' + get_html(post_data[x])+'\n')
+                                        log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(post_data[x])+'\n')
+                                        log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(fetch_data)+'\n')
+                                        log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(post_data[x])+'\n')
                                         log.flush()
                                         break
                 except:
-                        excepts.write(datetime.datetime.utcnow() + ' ' + "Except: ")
+                        excepts.write(str(datetime.datetime.utcnow()) + ' ' + "Except: ")
                         excepts.write(html+'\n')
                         excepts.flush()
                 else:
