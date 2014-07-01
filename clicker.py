@@ -56,7 +56,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	log.flush()
 	while True:
 		try:
-			html = get_html(fetch_data)
+			html = get_html(openers, fetch_data)
 			jdata = json.loads(html)
 			#print jdata
 			for x in xrange(len(p_type)):
