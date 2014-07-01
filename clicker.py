@@ -67,8 +67,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 					log.write(get_html(openers, post_data[x]))
 					log.flush()
 					break
-		except:
+		except Exception as e:
 			excepts.write(str(datetime.datetime.utcnow()) + ' ' + "Except: ")
+			excepts.write(str(e.message) + str(e.args) +'\n')
 			excepts.write(html+'\n')
 			excepts.flush()
 		else:
