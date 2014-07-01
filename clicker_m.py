@@ -22,16 +22,16 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 							('Connection', 'keep-alive'),
 							('Content-Length','15'),
 							('Content-Type', 'application/x-www-form-urlencoded'),
-							('Cookie', 'PHPSESSID=fen1abk47dct0v6s4ol6c103e5; mobile=n; __utma=125156309.1557815832.1403775274.1403792281.1404116627.4; __utmc=125156309; __utmz=125156309.1403775274.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ym_visorc_543098=w; __utmb=125156309.15.10.1404116627; eda=broadcast.field%40gmail.com%3A5KykUWhXUTk0Y'),
+							('Cookie', 'mobile=n; eda=lopatsina%40yandex.by%3A5K1ZBrEeF5n3s; PHPSESSID=b5a9m6ltv8m2fmoln6r230bjh6; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404132383.1404158777.5; __utmb=125156309.2.9.1404158778305; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)'),
 							('Host','www.eda.by'),
 							('Origin', 'http://www.eda.by'),
 							('Referer', 'http://www.eda.by/my/history/'),
 							('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13')]
 	urllib2.install_opener(opener)
-
+	
 	lag = 5
-        p_type = ["11","12","13","14"]
-        finish_clicks = [x-lag for x in [500, 350, 250, 150]]
+	p_type = ["11","12","13","14"]
+	finish_clicks = [x-lag for x in [500, 350, 250, 150]]
 
 	fetch_val = {'act' : 'getcrazy'} 
 
