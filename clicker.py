@@ -11,7 +11,7 @@ import sys
 def get_html (data, openers=None):
 	if openers:
 		responses = [opener.open('http://www.eda.by/enter.php', data) for opener in openers]
-		return str([str(datetime.datetime.utcnow()) + ' ' + response.read().decode('cp1251').encode('utf8') + '\n' for response in responses])
+		return str([str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n' for response in responses])
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
 		response = urllib2.urlopen(req)
