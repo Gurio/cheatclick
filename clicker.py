@@ -1,16 +1,46 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import gevent
+from gevent import monkey
+
+monkey.patch_all()
+
 import urllib2
 import urllib
 import cookielib
+import socket
 import datetime
 import json
 import sys
 
+
+ip_addresses = ['104.131.229.138', '107.170.12.7', '107.130.112.57', '105.124.112.71']
+
+true_socket = socket.socket
+def make_socket(addr):
+	def bound_socket(*a, **k):
+	    sock = true_socket(*a, **k)
+	    sock.bind((addr, 0))
+	    return sock
+	return bound_socket
+
+	#socket.socket = make_socket()
+
+def open_with_ip (url, data, opener, addr):
+	print "open"
+	socket.socket = make_socket(addr)	
+	print 'by', addr
+	to_ret = opener.open('http://www.eda.by/enter.php', data)
+	#to_ret = urllib2.urlopen('http://httpbin.org/ip')
+	#print to_ret
+	#socket.socket = true_socket	
+	return to_ret
+
+
 def get_html (data, openers=None):
 	if openers:
-		responses = [opener.open('http://www.eda.by/enter.php', data) for opener in openers]
+		responses = [open_with_ip('http://www.eda.by/enter.php', data, opener, addr) for opener,addr in zip(openers, ip_addresses)]
 		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n' for response in responses]
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
@@ -36,7 +66,8 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	#cj.load('./cookies.txt') 
 	cookies_list = ['PHPSESSID=fen1abk47dct0v6s4ol6c103e5; mobile=n; __utma=125156309.1557815832.1403775274.1403792281.1404116627.4; __utmc=125156309; __utmz=125156309.1403775274.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ym_visorc_543098=w; __utmb=125156309.15.10.1404116627; eda=broadcast.field%40gmail.com%3A5KykUWhXUTk0Y',
 'mobile=n; __utma=125156309.1557815832.1403775274.1404203947.1404211604.10; __utmz=125156309.1403775274.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); eda=re.stage00101%40gmail.com%3A5Kdtf5thaZG42; PHPSESSID=agunapj56kgm6a5lq79g2dn2u1; __utmc=125156309',
-'mobile=n; eda=lopatsina%40yandex.by%3A5K1ZBrEeF5n3s; PHPSESSID=b5a9m6ltv8m2fmoln6r230bjh6; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404132383.1404158777.5; __utmb=125156309.2.9.1404158778305; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)']
+'mobile=n; eda=lopatsina%40yandex.by%3A5K1ZBrEeF5n3s; PHPSESSID=b5a9m6ltv8m2fmoln6r230bjh6; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404132383.1404158777.5; __utmb=125156309.2.9.1404158778305; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+'mobile=n; PHPSESSID=1upqr8rq7j0jkvvv2a30gq63e4; eda=Mashabububu%40gmail.com%3A5K7fepSQ4yhMo; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404223725.1404237053.7; __utmb=125156309.5.9.1404237080411; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)']
 	openers = [make_opener(x) for x in cookies_list]#urllib2.HTTPCookieProcessor(cj))
 	
 	lag = 7
