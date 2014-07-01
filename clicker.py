@@ -8,11 +8,15 @@ import datetime
 import json
 import sys
 
-def get_html (openers, data):
-	responses = [opener.open('http://www.eda.by/enter.php', data) for opener in openers]
-	#req = urllib2.Request('http://www.eda.by/enter.php', data)
-	#response = urllib2.urlopen(req)
-	return str([str(datetime.datetime.utcnow()) + ' ' + response.read().decode('cp1251').encode('utf8') + '\n' for response in responses])
+def get_html (data, openers=None):
+	if openers:
+		responses = [opener.open('http://www.eda.by/enter.php', data) for opener in openers]
+		return str([str(datetime.datetime.utcnow()) + ' ' + response.read().decode('cp1251').encode('utf8') + '\n' for response in responses])
+	else:
+		req = urllib2.Request('http://www.eda.by/enter.php', data)
+		response = urllib2.urlopen(req)
+		return response.read().decode('cp1251').encode('utf8')
+	
 	
 def make_opener (cookie):
 	opener = urllib2.build_opener()#urllib2.HTTPCookieProcessor(cj))
@@ -51,20 +55,20 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print fetch_data
 	print post_data
 	log.write('LOG\n')
-	log.write(get_html(openers, post_data[0]))
-	log.write(get_html(openers, fetch_data))
+	log.write(get_html(post_data[0], openers))
+	log.write(get_html(fetch_data))
 	log.flush()
 	while True:
 		try:
-			html = get_html(openers, fetch_data)
+			html = get_html(fetch_data)
 			jdata = json.loads(html)
 			#print jdata
 			for x in xrange(len(p_type)):
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-					log.write(get_html(openers, post_data[x]))
-					log.write(get_html(openers, fetch_data))
-					log.write(get_html(openers, post_data[x]))
+					log.write(get_html(post_data[x], openers))
+					log.write(get_html(fetch_data))
+					log.write(get_html(post_data[x], openers))
 					log.flush()
 					break
 		except Exception as e:
