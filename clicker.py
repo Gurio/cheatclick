@@ -17,7 +17,6 @@ def get_html (data, openers=None):
 		response = urllib2.urlopen(req)
 		return response.read().decode('cp1251').encode('utf8')
 	
-	
 def make_opener (cookie):
 	opener = urllib2.build_opener()#urllib2.HTTPCookieProcessor(cj))
 	opener.addheaders = [	
@@ -31,6 +30,7 @@ def make_opener (cookie):
 							('Referer', 'http://www.eda.by/my/history/'),
 							('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13')]
 	return opener
+	
 with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	#cj = cookielib.MozillaCookieJar()
 	#cj.load('./cookies.txt') 
