@@ -24,3 +24,5 @@ Except: <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda
 Except: <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda.by/enter.php' />
 Except: <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda.by/enter.php' />
 Except: <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda.by/enter.php' />
+2014-07-01 10:12:04.905995 Except: {"11":{"tek":"88","finish":"500"},"12":{"tek":"133","finish":"350"},"13":{"tek":"32","finish":"250"},"14":{"tek":"145","finish":"150"}}
+2014-07-01 10:12:05.244606 Except: {"11":{"tek":"88","finish":"500"},"12":{"tek":"133","finish":"350"},"13":{"tek":"32","finish":"250"},"14":{"tek":"147","finish":"150"}}

@@ -11,7 +11,7 @@ import sys
 def get_html (data):
 	req = urllib2.Request('http://www.eda.by/enter.php', data)
 	response = urllib2.urlopen(req)
-	return response.read().decode('cp1251').encode('utf8')
+	return str(datetime.datetime.utcnow()) + ' ' + response.read().decode('cp1251').encode('utf8') + '\n'
 
 with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	#cj = cookielib.MozillaCookieJar()
@@ -57,9 +57,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 			for x in xrange(len(p_type)):
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-					log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(post_data[x])+'\n')
-					log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(fetch_data)+'\n')
-					log.write(str(datetime.datetime.utcnow()) + ' ' + get_html(post_data[x])+'\n')
+					log.write(get_html(post_data[x]))
+					log.write(get_html(fetch_data))
+					log.write(get_html(post_data[x]))
 					log.flush()
 					break
 		except:
