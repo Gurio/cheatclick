@@ -41,7 +41,7 @@ def open_with_ip (url, data, opener, addr):
 def get_html (data, openers=None):
 	if openers:
 		response = openers[sh_num].open('http://www.eda.by/enter.php', data)#open_with_ip('http://www.eda.by/enter.php', data, openers[sh_num], ip_addresses[sh_num])
-		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n']
+		return str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n'
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
 		response = urllib2.urlopen(req)
@@ -70,7 +70,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 'mobile=n; PHPSESSID=1upqr8rq7j0jkvvv2a30gq63e4; eda=Mashabububu%40gmail.com%3A5K7fepSQ4yhMo; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404223725.1404237053.7; __utmb=125156309.5.9.1404237080411; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)']
 	openers = [make_opener(x) for x in cookies_list]#urllib2.HTTPCookieProcessor(cj))
 	
-	lag = 9
+	lag = 6
         p_type = ["11","12","13","14"]
         finish_clicks = [x-lag for x in [500, 350, 250, 150]]
 
@@ -86,7 +86,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print fetch_data
 	print post_data
 	log.write('LOG\n')
-	[log.write(x) for x in get_html(post_data[0], openers)]
+	log.write(get_html(post_data[0], openers))# for x in get_html(post_data[0], openers)]
 	log.write(get_html(fetch_data))
 	log.flush()
 	while True:
@@ -97,9 +97,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 			for x in xrange(len(p_type)):
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-					[log.write(h) for h in get_html(post_data[x], openers)]
+					log.write(get_html(post_data[x], openers))# for h in get_html(post_data[x], openers)]
 					log.write(get_html(fetch_data))
-					[log.write(h) for h in get_html(post_data[x], openers)]
+					log.write(get_html(post_data[x], openers))# for h in get_html(post_data[x], openers)]
 					log.flush()
 					break
 		except Exception as e:
