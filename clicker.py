@@ -86,7 +86,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print fetch_data
 	print post_data
 	log.write('LOG\n')
-	log.write(get_html(post_data[0], openers))# for x in get_html(post_data[0], openers)]
+	#log.write(get_html(post_data[0], openers))# for x in get_html(post_data[0], openers)]
 	log.write(get_html(fetch_data))
 	log.flush()
 	while True:
