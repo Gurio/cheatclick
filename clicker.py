@@ -14,7 +14,7 @@ import datetime
 import json
 import sys
 
-sh_num = int(sys.args[1])
+sh_num = int(sys.argv[1])
 
 ip_addresses = ['104.131.229.138', '107.170.12.7', '107.130.112.57', '105.124.112.71']
 
