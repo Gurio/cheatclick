@@ -14,6 +14,7 @@ import datetime
 import json
 import sys
 
+sh_num = int(sys.args[1])
 
 ip_addresses = ['104.131.229.138', '107.170.12.7', '107.130.112.57', '105.124.112.71']
 
@@ -40,8 +41,8 @@ def open_with_ip (url, data, opener, addr):
 
 def get_html (data, openers=None):
 	if openers:
-		responses = [open_with_ip('http://www.eda.by/enter.php', data, opener, addr) for opener,addr in zip(openers, ip_addresses)]
-		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n' for response in responses]
+		response = open_with_ip('http://www.eda.by/enter.php', data, openers[sh_num], ip_addresses[sh_num])
+		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n']
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
 		response = urllib2.urlopen(req)
