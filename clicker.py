@@ -70,7 +70,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 'mobile=n; PHPSESSID=1upqr8rq7j0jkvvv2a30gq63e4; eda=Mashabububu%40gmail.com%3A5K7fepSQ4yhMo; _ym_visorc_543098=w; __utma=125156309.1676049902.1404062398.1404223725.1404237053.7; __utmb=125156309.5.9.1404237080411; __utmc=125156309; __utmz=125156309.1404062398.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)']
 	openers = [make_opener(x) for x in cookies_list]#urllib2.HTTPCookieProcessor(cj))
 	
-	lag = 6
+	lag = 5
         p_type = ["11","12","13","14"]
         finish_clicks = [x-lag for x in [500, 350, 250, 150]]
 
