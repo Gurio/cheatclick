@@ -29,15 +29,14 @@ def make_socket(addr):
 	#socket.socket = make_socket()
 
 def open_with_ip (url, data, opener, addr):
-	print "open"
+	#print "open"
 	socket.socket = make_socket(addr)	
-	print 'by', addr
-	to_ret = opener.open('http://www.eda.by/enter.php', data)
+	#print 'by', addr
+	return opener.open('http://www.eda.by/enter.php', data)
 	#to_ret = urllib2.urlopen('http://httpbin.org/ip')
 	#print to_ret
 	#socket.socket = true_socket	
-	return to_ret
-
+	
 
 def get_html (data, openers=None):
 	if openers:
