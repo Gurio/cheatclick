@@ -1818,3 +1818,25 @@ Except: <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda
 <meta http-equiv='refresh' content='0; url=/pause.php?url=http://www.eda.by/enter.php' />
 2014-07-02 09:01:36.733027 Except: list indices must be integers, not str('list indices must be integers, not str',)
 {"11":{"tek":"494","finish":"500"},"12":{"tek":"120","finish":"350"},"13":{"tek":"84","finish":"250"},"14":{"tek":"30","finish":"150"}}
+2014-07-02 10:56:37.859766 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"343","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:37.929258 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"345","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:37.972036 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"345","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.011189 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.057495 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.117602 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.161780 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.235617 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.276967 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"346","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.326808 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"348","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}
+2014-07-02 10:56:38.454738 Except: list indices must be integers, not str('list indices must be integers, not str',)
+{"11":{"tek":"86","finish":"500"},"12":{"tek":"351","finish":"350"},"13":{"tek":"103","finish":"250"},"14":{"tek":"50","finish":"150"}}

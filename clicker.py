@@ -30,7 +30,7 @@ def make_socket(addr):
 
 def open_with_ip (url, data, opener, addr):
 	#print "open"
-	socket.socket = make_socket(addr)	
+	#socket.socket = make_socket(addr)	
 	#print 'by', addr
 	return opener.open('http://www.eda.by/enter.php', data)
 	#to_ret = urllib2.urlopen('http://httpbin.org/ip')
@@ -40,7 +40,7 @@ def open_with_ip (url, data, opener, addr):
 
 def get_html (data, openers=None):
 	if openers:
-		response = open_with_ip('http://www.eda.by/enter.php', data, openers[sh_num], ip_addresses[sh_num])
+		response = openers[sh_num].open('http://www.eda.by/enter.php', data)#open_with_ip('http://www.eda.by/enter.php', data, openers[sh_num], ip_addresses[sh_num])
 		return [str(datetime.datetime.utcnow()) + ' ' + str(response.read().decode('cp1251').encode('utf8')) + '\n']
 	else:
 		req = urllib2.Request('http://www.eda.by/enter.php', data)
@@ -97,9 +97,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 			for x in xrange(len(p_type)):
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
-					[log.write(x) for x in get_html(post_data[x], openers)]
+					[log.write(h) for h in get_html(post_data[x], openers)]
 					log.write(get_html(fetch_data))
-					[log.write(x) for x in get_html(post_data[x], openers)]
+					[log.write(h) for h in get_html(post_data[x], openers)]
 					log.flush()
 					break
 		except Exception as e:
