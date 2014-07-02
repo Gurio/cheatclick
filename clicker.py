@@ -87,7 +87,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 	print post_data
 	log.write('LOG\n')
 	#log.write(get_html(post_data[0], openers))# for x in get_html(post_data[0], openers)]
-	log.write(get_html(fetch_data))
+	log.write(get_html(fetch_data) + '\n')
 	log.flush()
 	while True:
 		try:
@@ -98,7 +98,7 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 				#print int(jdata[p_type[x]]['tek']), finish_clicks[x] 
 				if int(jdata[p_type[x]]['tek']) >= finish_clicks[x]:
 					log.write(get_html(post_data[x], openers))# for h in get_html(post_data[x], openers)]
-					log.write(get_html(fetch_data))
+					log.write(get_html(fetch_data) + '\n')
 					log.write(get_html(post_data[x], openers))# for h in get_html(post_data[x], openers)]
 					log.flush()
 					break
