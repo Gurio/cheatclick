@@ -103,9 +103,9 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 					log.flush()
 					break
 		except Exception as e:
-			excepts.write(str(datetime.datetime.utcnow()) + ' ' + "Except: ")
-			excepts.write(str(e.message) + str(e.args) +'\n')
-			excepts.write(html+'\n')
-			excepts.flush()
+			#excepts.write(str(datetime.datetime.utcnow()) + ' ' + "Except: ")
+			#excepts.write(str(e.message) + str(e.args) +'\n')
+			#excepts.write(html+'\n')
+			#excepts.flush()
 		else:
 			pass
