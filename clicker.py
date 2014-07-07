@@ -107,5 +107,6 @@ with open('./exceptions', 'a') as excepts, open('./log', 'a') as log:
 			#excepts.write(str(e.message) + str(e.args) +'\n')
 			#excepts.write(html+'\n')
 			#excepts.flush()
+			pass
 		else:
 			pass
